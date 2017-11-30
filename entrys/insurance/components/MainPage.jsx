@@ -76,6 +76,7 @@ var MainPage = React.createClass({
         var mainContent;
         var nrs=[];
         var lrs=[];
+        // this.initialData();
         // if (this.state.news !== undefined && this.state.news !== null&& this.state.article !== null&& this.state.article !== null) {
 
             var news = this.state.news;
@@ -83,7 +84,7 @@ var MainPage = React.createClass({
                 nrs.push(
                     <div key={i}>
                         <li>
-                            <link to={window.App.getAppRoute() + "/news"}>{item.title} </link>
+                            <Link to={window.App.getAppRoute() + "/news"}>{item.title} </Link>
                         </li>
                     </div>
                 )
@@ -94,7 +95,7 @@ var MainPage = React.createClass({
                 lrs.push(
                     <div key={i}>
                         <li>
-                            <link to={window.App.getAppRoute() + "/library"}>{item.title} </link>
+                            <Link to={window.App.getAppRoute() + "/library"}>{item.title} </Link>
                         </li>
                     </div>
                 )
