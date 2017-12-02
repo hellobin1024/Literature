@@ -7,17 +7,19 @@ var ProxyQ = require('../../../components/proxy/ProxyQ');
 var SyncStore = require('../../../components/flux/stores/SyncStore');
 
 var MyCourse=React.createClass({
+
     getInitialState: function () {
         this.initialData();
-       return{data:null};
+        return{data:null};
     },
     initialData:function(){
         var url = "/func/courseBean/getCourseListForReact";
         var ref=this;
+        var params={};
         ProxyQ.query(
-            'GET',
+            'post',
             url,
-            null,
+            params,
             null,
             function (res) {
                 var a = res.data;
@@ -32,24 +34,38 @@ var MyCourse=React.createClass({
         );
     },
     render:function() {
-        //if (this.state.data !== null && this.state.data !== undefined) {
-            //var trs=[];
-            //var data=this.state.data;
-            //data.map(function (item, i) {
-            //    trs.push(
-            //        <tbody  key={i} className="event-table">
-            //        <tr>
-            //            <td><h4 style={{marginTop:'15px'}}><strong>课程名称{item.courseName}:</strong></h4></td>
-            //            <td><h4 style={{marginTop:'15px'}}><strong>开始时间{item.startDate}:</strong></h4></td>
-            //        </tr>
-            //
-            //        </tbody>
-            //    )
-            //})
-            var mainContent =
-                <div>
-                    <div className="clear">
-                    </div>
+        if (this.state.data !== null && this.state.data !== undefined) {
+            var trs=[];
+            var data=this.state.data;
+
+            data.map(function (item, i) {
+                trs.push(
+                    <tbody  key={i} className="event-table">
+                    <tr>
+                        <td><h4 style={{}}><strong>{item.courseId}</strong></h4></td>
+                        <td><h4 style={{}}><strong>{item.courseName}</strong></h4></td>
+                        <td><h4 style={{}}><strong>{item.startDate}</strong></h4></td>
+                        <td><h4 style={{}}><strong>{item.endDate}</strong></h4></td>
+                        <td>
+                            <span style={{textAlign:'center',fontSize:'14px',marginRight:'5px',textDecoration:'underline',cursor:'pointer',color:'#054c61'}} >
+                                  开始学习
+                            </span>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                )
+            })
+
+
+        } else {
+            this.initialData();
+        }
+
+        var mainContent =
+            <div>
+                <div className="clear">
+                </div>
                 <div className="w890 margin mar_20">
                     <div className="pro_R fr bg" style={{width:'890px'}}>
                         <div className="pro_bg">
@@ -60,28 +76,22 @@ var MyCourse=React.createClass({
                             <table className="table table-striped invoice-table">
                                 <thead className="table-head">
                                 <tr>
-                                    <th width="300">1</th>
-                                    <th width="300">1</th>
-                                    <th width="300">1</th>
-                                    <th width="300">1</th>
-                                    <th width="300">1</th>
-                                    <th width="300">1</th>
+                                    <th width="100">课程编号</th>
+                                    <th width="500">课程名称</th>
+                                    <th width="500">开始时间</th>
+                                    <th width="500">结束时间</th>
+                                    <th width="300">操作</th>
                                 </tr>
                                 </thead>
-
+                                {trs}
 
 
                             </table>
                         </div>
-                     </div>
-                 </div>
+                    </div>
                 </div>
+            </div>
 
-
-        //}
-        //else {
-        //    this.initialData();
-        //}
         return mainContent;
 
 

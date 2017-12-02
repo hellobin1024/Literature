@@ -27,26 +27,26 @@ var TopNav = React.createClass({
     },
     initValue: function () {
         /*if(SyncStore.getNote()==false) {
-            var url = "/func/insurance/getLogin";
-            ProxyQ.query(
-                'get',
-                url,
-                null,
-                null,
-                function (ob) {
-                    var name = ob.resList;
-                    if (name !== "null") {
-                        SyncStore.setNote();
-                        SyncStore.setLoginName(name);
-                        this.componentWillReceiveProps();
-                    }
+         var url = "/func/insurance/getLogin";
+         ProxyQ.query(
+         'get',
+         url,
+         null,
+         null,
+         function (ob) {
+         var name = ob.resList;
+         if (name !== "null") {
+         SyncStore.setNote();
+         SyncStore.setLoginName(name);
+         this.componentWillReceiveProps();
+         }
 
-                }.bind(this),
-                function (xhr, status, err) {
-                    console.error(this.props.url, status, err.toString());
-                }.bind(this)
-            );
-        }*/
+         }.bind(this),
+         function (xhr, status, err) {
+         console.error(this.props.url, status, err.toString());
+         }.bind(this)
+         );
+         }*/
     },
     exit: function () {
         if (flag == 0) {
@@ -76,14 +76,14 @@ var TopNav = React.createClass({
     render: function () {
         return (
             <div>
-             {/*   <div className="top w1008 margin" onLoad={this.initValue()}>
-                    <div className="logo">
-                        <a>
-                            <img src={window.App.getResourceDeployPrefix() + "/images/logo_02.png"}
-                                 style={{width: '400px', height: '100px'}}></img>
-                        </a>
-                    </div>
-                </div>*/}
+                {/*   <div className="top w1008 margin" onLoad={this.initValue()}>
+                 <div className="logo">
+                 <a>
+                 <img src={window.App.getResourceDeployPrefix() + "/images/logo_02.png"}
+                 style={{width: '400px', height: '100px'}}></img>
+                 </a>
+                 </div>
+                 </div>*/}
                 <div className="clear">
                 </div>
                 <div className="nav"  >
@@ -92,52 +92,55 @@ var TopNav = React.createClass({
                             文学生活馆
                         </div>
                         <div style={{float:"left"}}>
-                        <ul className="nav_menu">
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/"}>
-                                    <i>首页</i>
-                                </Link>
-                            </li>
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/myCourse"}>
-                                    <i>我的课程</i>
-                                </Link>
-                            </li>
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/live"}>
-                                    <i>作业提交</i>
-                                </Link>
-                            </li>
-                            <li className="nav_menu-item"><a href="javascript:void(0)" onClick="">考试</a>
-                                <ul className="nav_submenu">
-                                    <li className="nav_submenu-item">
-                                        <Link to={window.App.getAppRoute() + "/video"}>
-                                            <i>在线考试</i>
-                                        </Link>
-                                    </li>
-                                    <li className="nav_submenu-item">
-                                        <Link to={window.App.getAppRoute() + "/audio"}>
-                                            <i>成绩查看</i>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/literarylife"}>
-                                    <i>观看直播</i>
-                                </Link>
-                            </li>
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/collection"}>
-                                    <i>新闻资讯</i>
-                                </Link>
-                            </li>
-                            <li className="nav_menu-item">
-                                <Link to={window.App.getAppRoute() + "/overview"}>
-                                    <i>讲座报名</i>
-                                </Link>
-                            </li>
-                        </ul>
+                            <ul className="nav_menu">
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/"}>
+                                        <i>首页</i>
+                                    </Link>
+                                </li>
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/myCourse"}>
+                                        <i>我的课程</i>
+                                    </Link>
+                                </li>
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/live"}>
+                                        <i>作业提交</i>
+                                    </Link>
+                                </li>
+                                <li className="nav_menu-item"><a href="javascript:void(0)" onClick="">考试</a>
+                                    <ul className="nav_submenu">
+                                        <li className="nav_submenu-item">
+                                            <Link to={window.App.getAppRoute() + "/video"}>
+                                                <i>在线考试</i>
+                                            </Link>
+                                        </li>
+                                        <li className="nav_submenu-item">
+                                            <Link to={window.App.getAppRoute() + "/audio"}>
+                                                <i>成绩查看</i>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/literarylife"}>
+                                        <i>观看直播</i>
+                                    </Link>
+                                </li>
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/collection"}>
+                                        <i>新闻资讯</i>
+                                    </Link>
+                                </li>
+
+
+
+                                <li className="nav_menu-item">
+                                    <Link to={window.App.getAppRoute() + "/overview"}>
+                                        <i>讲座报名</i>
+                                    </Link>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
