@@ -133,8 +133,6 @@ var TopNav = React.createClass({
                                     </Link>
                                 </li>
 
-
-
                                 <li className="nav_menu-item">
                                     <Link to={window.App.getAppRoute() + "/overview"}>
                                         <i>讲座报名</i>
