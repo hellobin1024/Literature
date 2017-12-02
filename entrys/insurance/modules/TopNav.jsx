@@ -105,7 +105,7 @@ var TopNav = React.createClass({
         var ref=this;
         return (
             <div  ref="loginPage">
-                <div className="top w1008 margin" onLoad={this.initValue()}>
+                <div className="top w1008 margin" >
                     <div className="logo">
                         <a>
                             <img src={window.App.getResourceDeployPrefix() + "/images/logo_02.png"}
