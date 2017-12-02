@@ -16,37 +16,15 @@ var TopNav = React.createClass({
     getInitialState: function () {
         flag = 0;
         var note = SyncStore.getNote();
+        var path = SyncStore.getRouter();
         var userName = SyncStore.getLoginName();
-        return ({loginState: note, userName: userName})
+        return ({loginState: note, path:path,userName: userName})
     },
 
     componentWillReceiveProps: function () {
         var note = SyncStore.getNote();
         var userName = SyncStore.getLoginName();
         this.setState({loginState: note, userName: userName})
-    },
-    initValue: function () {
-        /*if(SyncStore.getNote()==false) {
-            var url = "/func/insurance/getLogin";
-            ProxyQ.query(
-                'get',
-                url,
-                null,
-                null,
-                function (ob) {
-                    var name = ob.resList;
-                    if (name !== "null") {
-                        SyncStore.setNote();
-                        SyncStore.setLoginName(name);
-                        this.componentWillReceiveProps();
-                    }
-
-                }.bind(this),
-                function (xhr, status, err) {
-                    console.error(this.props.url, status, err.toString());
-                }.bind(this)
-            );
-        }*/
     },
     exit: function () {
         if (flag == 0) {
@@ -74,14 +52,59 @@ var TopNav = React.createClass({
 
         }
     },
-    login: function () {
+    login:function(){
 
+        var ref=this;
+        if(flag==0) {
+
+            var a=1;
+            var loginPage = this.refs['loginPage'];
+            var username = $(loginPage).find("input[name='username']").val();
+            var password = $(loginPage).find("input[name='password']").val();
+            if (username == ''||username==null) {
+                alert('请填写用户名！');
+            } else if(password ==''||password == null){
+                alert('请填写密码！');
+            } else {
+                var url = "/func/auth/webLogin";
+                var params = {
+                    loginName: username,
+                    password: password,
+                    validateCode: "1"
+                };
+
+                ProxyQ.query(
+                    'post',
+                    url,
+                    params,
+                    null,
+                    function (res) {
+                        var reCode = res.reCode;
+                        var realName = res.loginName;
+                        if (reCode !== undefined && reCode !== null && (reCode == 0 || reCode == "0")) { //登陆成功
+                            SyncStore.setNote(); //设置全局登录状态为true
+                            SyncStore.setResult(true);
+                            SyncStore.setLoginName(realName);
+                            ref.setState({path:"/MainSectionAfterLogin"});
+                            console.log("登陆成功！");
+                            flag = 1;
+                            document.getElementById("goToOther").click();
+                        }else{
+                            alert("登录失败！");
+                        }
+                    }.bind(this),
+                    function (xhr, status, err) {
+                        console.error(this.props.url, status, err.toString());
+                    }.bind(this)
+                );
+            }
+
+        }
     },
-
     render: function () {
         var ref=this;
         return (
-            <div>
+            <div  ref="loginPage">
                 <div className="top w1008 margin" onLoad={this.initValue()}>
                     <div className="logo">
                         <a>
@@ -92,49 +115,18 @@ var TopNav = React.createClass({
 
                     <div className="fr">
                         <span> 用户名:
-                            <input id="pass"/>
+                            <input id="loginUsername" name="username" />
                         </span>
                         <span> 密码:
-                            <input id="pass2"/>
+                            <input id="loginPassword" name="password"/>
                         </span>
                         <span>
-                             <Link to={window.App.getAppRoute() + "/MainSectionAfterLogin"}>
-                             <button >登录</button>
-                             </Link>
+                              <button type="button" id="login" onClick={this.login}>
+                                  <a style={{color:'#000000'}}>登录</a>
+                                  <Link to={window.App.getAppRoute() + this.state.path} id="goToOther"></Link>
+                              </button>
                         </span>
-                        {/*<ul className="link">*/}
-                            {/*{this.state.loginState ?*/}
-                                {/*<li className="plogin">*/}
-                                    {/*<i className="user" onClick={this.exit} style={{*/}
-                                        {/*float: 'right',*/}
-                                        {/*width: '20px',*/}
-                                        {/*cursor: 'pointer',*/}
-                                        {/*textDecoration: 'underline'*/}
-                                    {/*}}>*/}
-                                        {/*<i className='icon-off'></i>*/}
-                                        {/*<Link to={window.App.getAppRoute() + "/mainPage"} id="goToOther"></Link>*/}
-                                    {/*</i>*/}
-                                    {/*<a className="user" style={{float: 'right', width: '95px'}}*/}
-                                       {/*href="javascript:void(0)">*/}
-                                        {/*<i className='icon-user'></i>*/}
-                                        {/*<strong style={{marginLeft: '10px'}}>{this.state.userName}</strong>*/}
-                                    {/*</a>*/}
 
-                                {/*</li>*/}
-
-                                {/*:*/}
-                                {/*<li className="plogin">*/}
-                                    {/*<Link to={window.App.getAppRoute() + "/login"}>*/}
-                                        {/*<i className="login-btn" onClick={this.click.bind(null, "/mainPage")}>教师登录</i>*/}
-                                    {/*</Link>*/}
-                                    {/*<Link to={window.App.getAppRoute() + "/login"}>*/}
-                                        {/*<i className="login-btn" onClick={this.click.bind(null, "/mainPage")}>学生登录</i>*/}
-                                    {/*</Link>*/}
-                                    {/*<a href="login.html">登录</a>*/}
-                                {/*</li>*/}
-
-                            {/*}*/}
-                        {/*</ul>*/}
                     </div>
                 </div>
 
@@ -153,13 +145,6 @@ var TopNav = React.createClass({
                                     <i>中心概况</i>
                                 </Link>
                             </li>
-                            {/*<li className="nav_menu-item">*/}
-                            {/*<Link to={window.App.getAppRoute() + "/library"}>*/}
-                            {/*<i>中心文库</i>*/}
-                            {/*</Link>*/}
-                            {/*</li>*/}
-
-
                             <li className="nav_menu-item">
                                 <Link to={window.App.getAppRoute() + "/live"}>
                                     <i>讲座直播</i>
