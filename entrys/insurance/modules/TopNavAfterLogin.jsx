@@ -127,6 +127,8 @@ var TopNav = React.createClass({
                                         <i>观看直播</i>
                                     </Link>
                                 </li>
+
+
                                 <li className="nav_menu-item">
                                     <Link to={window.App.getAppRoute() + "/collection"}>
                                         <i>新闻资讯</i>
