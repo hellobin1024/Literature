@@ -169,6 +169,7 @@ var TopNav = React.createClass({
                                     <i>文学生活</i>
                                 </Link>
                             </li>
+
                             <li className="nav_menu-item">
                                 <Link to={window.App.getAppRoute() + "/collection"}>
                                     <i>文学典藏</i>
