@@ -30,10 +30,10 @@ var MainPage = React.createClass({
     },
     getHomepageNews: function () {
 
-        var url = "/func/allow/getHomepageNews";
+        var url = "/func/homepageBean/test";
         var ref = this;
         var params = {};
-        Proxy.query(
+        ProxyQ.query(
             'POST',
             url,
             params,
@@ -50,10 +50,11 @@ var MainPage = React.createClass({
     },
     getHomepageArticle: function () {
 
-        var url = "/func/allow/getHomepageArticle";
+        // var url = "/func/allow/getHomepageArticle";
+        var url = "/func/homepageBean/test";
         var ref = this;
         var params = {};
-        Proxy.query(
+        ProxyQ.query(
             'POST',
             url,
             params,
@@ -69,14 +70,15 @@ var MainPage = React.createClass({
         );
     },
     getInitialState: function () {
+        this.initialData();
         return {data: null}
+
     },
 
     render: function () {
         var mainContent;
         var nrs=[];
         var lrs=[];
-        // this.initialData();
         // if (this.state.news !== undefined && this.state.news !== null&& this.state.article !== null&& this.state.article !== null) {
 
             var news = this.state.news;
