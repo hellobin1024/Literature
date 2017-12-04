@@ -30,9 +30,12 @@ var MainPage = React.createClass({
     },
     getHomepageNews: function () {
 
-        var url = "/func/homepageBean/test";
+        var url = "/func/homepageBean/getNewsInfoByTypeAndNumber";
         var ref = this;
-        var params = {};
+        var params = {
+            num:5,
+            newsType:"ZXDT",
+        };
         ProxyQ.query(
             'POST',
             url,
@@ -50,10 +53,12 @@ var MainPage = React.createClass({
     },
     getHomepageArticle: function () {
 
-        // var url = "/func/allow/getHomepageArticle";
-        var url = "/func/homepageBean/test";
+        var url = "/func/homepageBean/getNewsInfoByTypeAndNumber";
         var ref = this;
-        var params = {};
+        var params = {
+            num:5,
+            newsType:"ZXWK",
+        };
         ProxyQ.query(
             'POST',
             url,
@@ -70,7 +75,6 @@ var MainPage = React.createClass({
         );
     },
     getInitialState: function () {
-        this.initialData();
         return {data: null}
 
     },
@@ -79,7 +83,7 @@ var MainPage = React.createClass({
         var mainContent;
         var nrs=[];
         var lrs=[];
-        // if (this.state.news !== undefined && this.state.news !== null&& this.state.article !== null&& this.state.article !== null) {
+        if (this.state.news !== undefined && this.state.news !== null&& this.state.article !== null&& this.state.article !== null) {
 
             var news = this.state.news;
             news.map(function (item, i) {
@@ -244,9 +248,9 @@ var MainPage = React.createClass({
                 </div>
                 <Footer/>
             </div>
-        // } else{
-        //     this.initialData();
-        // }
+        } else{
+            this.initialData();
+        }
 
 
         return (
