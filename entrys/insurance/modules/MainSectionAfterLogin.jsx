@@ -32,7 +32,7 @@ var MainSection = React.createClass({
         var height=null;
         height=target.contentDocument.body.scrollHeight;
         target.height=height;
-            //height=document.body.scrollHeight;
+        //height=document.body.scrollHeight;
     },
 
     getInitialState: function () {
