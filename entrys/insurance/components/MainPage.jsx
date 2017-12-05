@@ -33,7 +33,7 @@ var MainPage = React.createClass({
         var url = "/func/homepageBean/getNewsInfoByTypeAndNumber";
         var ref = this;
         var params = {
-            num:5,
+            num:4,
             newsType:"ZXDT",
         };
         ProxyQ.query(
