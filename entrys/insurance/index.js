@@ -27,6 +27,7 @@ render((
             <Route path={window.App.getAppRoute()+"/audio"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/collection"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/overview"} component={MainSection}/>
+            <Route path={window.App.getAppRoute()+"/news"} component={MainSection}/>
 
 
         </Route>

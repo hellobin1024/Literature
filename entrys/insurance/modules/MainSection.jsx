@@ -16,6 +16,7 @@ import Audio from '../modules/Audio.jsx';
 import Collection from '../modules/Audio.jsx';
 import Overview from '../modules/Overview.jsx';
 import App from '../modules/App.jsx';
+import News from '../modules/News.jsx';
 
 var config=require('../../../config.json');
 import '../../../css/insurance/components/mainSection.css';
@@ -67,7 +68,10 @@ var MainSection = React.createClass({
                     ctrl = <MainPage></MainPage>;
                     label = "主页";
                     break;
-
+                case window.App.getAppRoute() + "/news":
+                    ctrl = <News></News>;
+                    label = "中心动态";
+                    break;
                 case window.App.getAppRoute() + "/introduce":
                     ctrl = <Introduce></Introduce>;
                     label = "中心概况";
