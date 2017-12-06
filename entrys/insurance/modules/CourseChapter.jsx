@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import {Link} from 'react-router';
 import '../../../css/insurance/components/passport.css';
 var ProxyQ = require('../../../components/proxy/ProxyQ');
+import LearnVideo from '../modules/LearnVideo.jsx';
 var SyncStore = require('../../../components/flux/stores/SyncStore');
 
 var CourseChapter=React.createClass({
@@ -12,7 +13,11 @@ var CourseChapter=React.createClass({
         if(this.props.id!==undefined && this.props.id){
             id = this.props.id;
         }
-        return{id:id,datatwo:null};
+        return{id:id,datatwo:null,current:null,sectionId:null};
+    },
+    tabChange:function(tab,sectionId){
+        this.setState({current:tab});
+        this.setState({sectionId:sectionId});
     },
     initialData:function(){
         var url = "/func/courseBean/getCourseInfoForReact";
@@ -60,10 +65,12 @@ var CourseChapter=React.createClass({
             }
         );
     },
+
     render:function() {
         if (this.state.data !== null && this.state.data !== undefined) {
             var trs=[];
             var prs=[];
+            var mainContent=null;
             var data=this.state.data;
             var datatwo=this.state.datatwo;
             var ref=this;
@@ -83,9 +90,20 @@ var CourseChapter=React.createClass({
                 )
             datatwo.map(function (item, i) {
                 prs.push(
-                    <div>
+                    <div style={{backgroundColor:"#cdc2c2",marginTop:'10px'}}>
+                        <div style={{float:'left',marginLeft:'50px'}}>
                              <span>{item.sectionId}</span>
-                             <span>{item.sectionName}</span>
+
+                             <span style={{marginLeft:'50px'}}>{item.sectionName}</span>
+                        </div>
+                        <div style={{float:'left',textAlign:'right',marginLeft:'620px'}}>
+                         <span style={{textAlign:'center',fontSize:'14px',marginRight:'5px',textDecoration:'underline',cursor:'pointer',color:'#054c61'}}
+                               onClick={ref.tabChange.bind(this,'LearnVideo',item.sectionId)}>
+
+                                  开始学习
+                       </span>
+                       </div>
+                        <div className="clearfix"/>
                     </div>
                 )
             })
@@ -93,38 +111,43 @@ var CourseChapter=React.createClass({
         } else {
             this.initialData();
         }
+        if(this.state.current =='LearnVideo'){
+            var sectionId=this.state.sectionId;
+            mainContent=(
+                <LearnVideo sectionId={sectionId}/>
+            );
+        }else {
+            mainContent =
+                <div>
+                    <div className="clear">
+                    </div>
+                    <div className="w890 margin mar_20">
+                        <div className="pro_R fr bg" style={{width:'890px'}}>
+                            <div className="pro_bg">
+                                <span className="fr pad_L">您的位置： <a>主页</a> &gt; 我的课程</span>
+                            </div>
 
-        var mainContent =
-            <div>
-                <div className="clear">
-                </div>
-                <div className="w890 margin mar_20">
-                    <div className="pro_R fr bg" style={{width:'890px'}}>
-                        <div className="pro_bg">
-                            <span className="fr pad_L">您的位置： <a>主页</a> &gt; 我的课程</span>
+                            <div style={{width:"800px", margin:'20px auto'}}>
+                                <table className="table table-striped invoice-table">
+                                    <thead className="table-head">
+                                    <tr>
+                                        <th width="150">课程编号</th>
+                                        <th width="200">课程名称</th>
+                                        <th width="200">课时</th>
+                                        <th width="200">授课教师</th>
+                                        <th width="300">参考书</th>
+                                        <th width="500">介绍</th>
+                                        <th width="400">章节介绍</th>
+                                    </tr>
+                                    </thead>
+                                    {trs}
+                                </table>
+                            </div>
+                            {prs}
                         </div>
-
-                        <div style={{width:"800px", margin:'20px auto'}}>
-                            <table className="table table-striped invoice-table">
-                                <thead className="table-head">
-                                <tr>
-                                    <th width="150">课程编号</th>
-                                    <th width="200">课程名称</th>
-                                    <th width="200">课时</th>
-                                    <th width="200">授课教师</th>
-                                    <th width="300">参考书</th>
-                                    <th width="500">介绍</th>
-                                    <th width="400">章节介绍</th>
-                                </tr>
-                                </thead>
-                                {trs}
-                            </table>
-                        </div>
-                        {prs}
                     </div>
                 </div>
-            </div>
-
+        }
         return mainContent;
 
 

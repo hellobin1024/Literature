@@ -25,50 +25,50 @@ var MainPage = React.createClass({
 
 
     initialData: function () {
-        this.getHomepageNews();
-        this.getHomepageArticle();
+       /* this.getHomepageNews();
+        this.getHomepageArticle();*/
     },
-    getHomepageNews: function () {
-
-        var url = "/func/homepageBean/test";
-        var ref = this;
-        var params = {};
-        ProxyQ.query(
-            'POST',
-            url,
-            params,
-            null,
-            function (res) {
-                var a = res.data;
-                ref.setState({news: a});
-            },
-
-            function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }
-        );
-    },
-    getHomepageArticle: function () {
-
-        // var url = "/func/allow/getHomepageArticle";
-        var url = "/func/homepageBean/test";
-        var ref = this;
-        var params = {};
-        ProxyQ.query(
-            'POST',
-            url,
-            params,
-            null,
-            function (res) {
-                var a = res.data;
-                ref.setState({article: a});
-            },
-
-            function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }
-        );
-    },
+    //getHomepageNews: function () {
+    //
+    //    var url = "/func/homepageBean/test";
+    //    var ref = this;
+    //    var params = {};
+    //    ProxyQ.query(
+    //        'POST',
+    //        url,
+    //        params,
+    //        null,
+    //        function (res) {
+    //            var a = res.data;
+    //            ref.setState({news: a});
+    //        },
+    //
+    //        function (xhr, status, err) {
+    //            console.error(this.props.url, status, err.toString());
+    //        }
+    //    );
+    //},
+    //getHomepageArticle: function () {
+    //
+    //    // var url = "/func/allow/getHomepageArticle";
+    //    var url = "/func/homepageBean/test";
+    //    var ref = this;
+    //    var params = {};
+    //    ProxyQ.query(
+    //        'POST',
+    //        url,
+    //        params,
+    //        null,
+    //        function (res) {
+    //            var a = res.data;
+    //            ref.setState({article: a});
+    //        },
+    //
+    //        function (xhr, status, err) {
+    //            console.error(this.props.url, status, err.toString());
+    //        }
+    //    );
+    //},
     getInitialState: function () {
         this.initialData();
         return {data: null}
@@ -81,27 +81,27 @@ var MainPage = React.createClass({
         var lrs=[];
         // if (this.state.news !== undefined && this.state.news !== null&& this.state.article !== null&& this.state.article !== null) {
 
-            var news = this.state.news;
-            news.map(function (item, i) {
-                nrs.push(
-                    <div key={i}>
-                        <li>
-                            <Link to={window.App.getAppRoute() + "/news"}>{item.title} </Link>
-                        </li>
-                    </div>
-                )
-            })
-
-            var article = this.state.article;
-            article.map(function (item, i) {
-                lrs.push(
-                    <div key={i}>
-                        <li>
-                            <Link to={window.App.getAppRoute() + "/library"}>{item.title} </Link>
-                        </li>
-                    </div>
-                )
-            })
+            //var news = this.state.news;
+            //news.map(function (item, i) {
+            //    nrs.push(
+            //        <div key={i}>
+            //            <li>
+            //                <Link to={window.App.getAppRoute() + "/news"}>{item.title} </Link>
+            //            </li>
+            //        </div>
+            //    )
+            //})
+            //
+            //var article = this.state.article;
+            //article.map(function (item, i) {
+            //    lrs.push(
+            //        <div key={i}>
+            //            <li>
+            //                <Link to={window.App.getAppRoute() + "/library"}>{item.title} </Link>
+            //            </li>
+            //        </div>
+            //    )
+            //})
 
 
         mainContent =
