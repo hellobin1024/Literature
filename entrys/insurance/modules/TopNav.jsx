@@ -146,6 +146,11 @@ var TopNav = React.createClass({
                                 </Link>
                             </li>
                             <li className="nav_menu-item">
+                                <Link to={window.App.getAppRoute() + "/news"}>
+                                    <i>中心动态</i>
+                                </Link>
+                            </li>
+                            <li className="nav_menu-item">
                                 <Link to={window.App.getAppRoute() + "/live"}>
                                     <i>讲座直播</i>
                                 </Link>
@@ -193,6 +198,3 @@ var TopNav = React.createClass({
     },
 });
 module.exports = TopNav;
-/**
- * Created by douxiaobin on 2017/02/10.
- */
