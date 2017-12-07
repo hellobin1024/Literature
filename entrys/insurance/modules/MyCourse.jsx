@@ -54,7 +54,7 @@ var MyCourse=React.createClass({
                         <td><h4 style={{}}><strong>{item.endDate}</strong></h4></td>
                         <td>
                             <span style={{textAlign:'center',fontSize:'14px',marginRight:'5px',textDecoration:'underline',cursor:'pointer',color:'#054c61'}} onClick={ref.tabChange.bind(this,'CourseChapter',item.courseId)}>
-                                  开始学习
+                                  查看
                             </span>
                         </td>
                     </tr>
