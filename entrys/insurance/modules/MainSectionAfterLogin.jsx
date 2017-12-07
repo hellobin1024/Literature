@@ -17,6 +17,7 @@ import MyCourse from '../modules/MyCourse.jsx';
 import Collection from '../modules/Audio.jsx';
 import Overview from '../modules/Overview.jsx';
 import App from '../modules/App.jsx';
+import MyHomework from '../modules/MyHomework.jsx';
 
 var config=require('../../../config.json');
 import '../../../css/insurance/components/mainSection.css';
@@ -68,9 +69,9 @@ var MainSection = React.createClass({
                     ctrl = <MyCourse></MyCourse>;
                     label = "我的课程";
                     break;
-                case window.App.getAppRoute() + "/introduce":
-                    ctrl = <Introduce></Introduce>;
-                    label = "中心概况";
+                case window.App.getAppRoute() + "/myhomework":
+                    ctrl = <MyHomework></MyHomework>;
+                    label = "作业提交";
                     break;
                 case window.App.getAppRoute() + "/library":
                     ctrl = <Library></Library>;
