@@ -46,31 +46,31 @@ var Live$Video = React.createClass({
             // position: 'top-right',//水印位置
             //watermarkLink: "http://example.net/",//水印链接
             // poster: 'http://url/img.png',//视频封面
-            plugins: {'playback': [RTMP]},
-            rtmpConfig: {
-                swfPath: '/RTMP.swf',
-                scaling:'stretch',
-                playbackType: 'live',
-                bufferTime: this.state.option.bufferTime,//在开始播放媒体之前要缓冲多久
-                startLevel: this.state.option.startLevel,//初始质量水平指数
-                switchRules: {
-                    "SufficientBandwidthRule": {
-                        "bandwidthSafetyMultiple": 1.15,//带宽安全倍数
-                        "minDroppedFps": 2//最小掉帧
-                    },
-                    "InsufficientBufferRule": {
-                        "minBufferLength": 2
-                    },
-                    "DroppedFramesRule": {
-                        "downSwitchByOne": 10,
-                        "downSwitchByTwo": 20,
-                        "downSwitchToZero": 24
-                    },
-                    "InsufficientBandwidthRule": {
-                        "bitrateMultiplier": 1.15
-                    }
-                }
-            },
+            //plugins: {'playback': [RTMP]},
+            //rtmpConfig: {
+            //    swfPath: '/RTMP.swf',
+            //    scaling:'stretch',
+            //    playbackType: 'live',
+            //    bufferTime: this.state.option.bufferTime,//在开始播放媒体之前要缓冲多久
+            //    startLevel: this.state.option.startLevel,//初始质量水平指数
+            //    switchRules: {
+            //        "SufficientBandwidthRule": {
+            //            "bandwidthSafetyMultiple": 1.15,//带宽安全倍数
+            //            "minDroppedFps": 2//最小掉帧
+            //        },
+            //        "InsufficientBufferRule": {
+            //            "minBufferLength": 2
+            //        },
+            //        "DroppedFramesRule": {
+            //            "downSwitchByOne": 10,
+            //            "downSwitchByTwo": 20,
+            //            "downSwitchToZero": 24
+            //        },
+            //        "InsufficientBandwidthRule": {
+            //            "bitrateMultiplier": 1.15
+            //        }
+            //    }
+            //},
         });
     }
 
