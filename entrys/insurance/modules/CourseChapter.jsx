@@ -35,7 +35,7 @@ var CourseChapter=React.createClass({
             function (res1) {
                 var a = res1.data;
                 if(res1.re==-1||res1.re=="-1"){
-                    alert(res1.re);
+                    alert(res1.data);
                 }
                 var url = "/func/courseBean/getCourseSectionForReact";
                 var params={
@@ -49,7 +49,7 @@ var CourseChapter=React.createClass({
                     function (res2) {
                         var b = res2.data;
                         if(res2.re==-1||res2.re=="-1"){
-                            alert(res2.re);
+                            alert(res2.data);
                         }
                         ref.setState({datatwo:b});
                         trf.setState({data:a});
