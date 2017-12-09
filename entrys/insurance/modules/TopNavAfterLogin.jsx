@@ -104,7 +104,7 @@ var TopNav = React.createClass({
                                     </Link>
                                 </li>
                                 <li className="nav_menu-item">
-                                    <Link to={window.App.getAppRoute() + "/live"}>
+                                    <Link to={window.App.getAppRoute() + "/myhomework"}>
                                         <i>作业提交</i>
                                     </Link>
                                 </li>

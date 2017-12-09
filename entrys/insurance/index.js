@@ -23,6 +23,7 @@ render((
             <Route path={window.App.getAppRoute()+"/literarylife"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/live"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/myCourse"} component={MainSectionAfterLogin}/>
+            <Route path={window.App.getAppRoute()+"/myhomework"} component={MainSectionAfterLogin}/>
             <Route path={window.App.getAppRoute()+"/video"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/audio"} component={MainSection}/>
             <Route path={window.App.getAppRoute()+"/collection"} component={MainSection}/>
