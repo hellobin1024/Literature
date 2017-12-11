@@ -49,8 +49,8 @@ var LearnVideo=React.createClass({
                             <span className="fr pad_L">您的位置： <a>主页</a> &gt; 讲座视频</span>
                         </div>
                         <div style={{width:"800px", marginLeft:'100px',mariginTop:"50px"}}>
-                            <video id="my-video"  className="video-js" width="700" height="400"  controls preload="auto"
-                                   style={{width:'700px',height:'400px',preload:"auto",controls:"controls"}}
+                            <video id="my-video"  className="video-js" width="700" height="400" controls="controls" preload="auto"
+                                   style={{width:'700px',height:'400px',controls:'controls' ,preload:'auto'}}
                                    >
                                 <source src={urlb} type='video/mp4'/>
                                     <p className="vjs-no-js">
